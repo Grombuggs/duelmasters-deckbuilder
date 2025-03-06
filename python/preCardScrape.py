@@ -3,19 +3,6 @@ import requests
 import pathlib
 import subprocess
 
-def antifandomize():
-    with open("dm01Img", 'r') as f:
-        lines = [line.replace('fandom', 'antifandom') for line in f]
-    with open ("dm01Img, 'w") as f:
-        f.write(''.join(lines))
-        f.close()
-
-    with open("dm02Img", 'r') as f:
-        lines = [line.replace('fandom', 'antifandom') for line in f]
-    with open ("dm02Img, 'w") as f:
-        f.write(''.join(lines))
-        f.close()
-
 URL = "https://duelmasters.fandom.com/wiki/DM-01_Base_Set_Gallery_(TCG)"
 page = requests.get(URL)
 
@@ -40,8 +27,6 @@ open('dm01', 'w').writelines([ line for line in open('dm01Raw') if "/wiki/" in l
 open('dm01Img', 'w').writelines([ line for line in open('dm01Raw') if '.jpg' in line])
 open('dm02', 'w').writelines([ line for line in open('dm02Raw') if "/wiki/" in line])
 open('dm02Img', 'w').writelines([ line for line in open('dm01Raw') if '.jpg' in line])
-
-antifandomize()
 
 pathlib.Path.unlink('dm01Raw')
 pathlib.Path.unlink('dm02Raw')
