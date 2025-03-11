@@ -49,6 +49,11 @@ with open('cardInfoTrimmed.txt', 'a') as f:
         elif 'Mana Number:' in line:
             try:
                 print("Mana Number: ", lines[i + 1].strip(), file=f)
+            except IndexError:
+                pass
+        elif 'Illustrator:' in line:
+            try:
+                print("Illustrator: ", lines[i + 1].strip(), file=f)
                 print("\n", file=f)
             except IndexError:
                 pass
