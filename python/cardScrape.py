@@ -14,7 +14,7 @@ def remove_empty_lines(text):
     non_empty_lines = filter(lambda line: line.strip() != '', lines)
     return '\n'.join(non_empty_lines)
 
-for i in tqdm(range(0, 100), desc="Fetching info:"):
+for i in tqdm(range(0, 100), desc="Fetching DM-01"):
     sleep(0.1)
     for url in urls:
         get_request = requests.Request('GET', url)
@@ -23,7 +23,6 @@ for i in tqdm(range(0, 100), desc="Fetching info:"):
         soup = BeautifulSoup(response.text, 'html.parser')
         with open("dm01Info", "a") as f:
             print(remove_empty_lines(soup.get_text()), file=f)
-        f.close()
 
 with open('dm02') as f:
     urls = f.readlines()
@@ -35,7 +34,7 @@ def remove_empty_lines(text):
     non_empty_lines = filter(lambda line: line.strip() != '', lines)
     return '\n'.join(non_empty_lines)
 
-for i in tqdm(range(0, 100), desc="Fetching info:"):
+for i in tqdm(range(0, 100), desc="Fetching DM-02"):
     sleep(0.1)
     for url in urls:
         get_request = requests.Request('GET', url)
